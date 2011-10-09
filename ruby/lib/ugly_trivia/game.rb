@@ -2,9 +2,9 @@ module UglyTrivia
   class Game
     def  initialize
       @players = []
-      @places = Array.new(6)
-      @purses = Array.new(6)
-      @in_penalty_box = Array.new(6)
+      @places = Array.new(6, 0)
+      @purses = Array.new(6, 0)
+      @in_penalty_box = Array.new(6, 0)
       
       @pop_questions = []
       @science_questions = []
@@ -60,7 +60,7 @@ module UglyTrivia
           
           puts @players[@current_player] +
                 '\'s new location is' +
-                @places[@current_player]
+                @places[@current_player].to_s
           puts "The category is #{current_category}"
           ask_question
         else
@@ -75,7 +75,7 @@ module UglyTrivia
         
         puts @players[@current_player] +
               '\'s new location is' +
-              @places[@current_player]
+              @places[@current_player].to_s
         puts "The category is #{current_category}"
         ask_question
       end
@@ -134,11 +134,11 @@ module UglyTrivia
         @purses[@current_player] += 1
         puts @players[@current_player] +
           ' now has ' +
-          @purses[@current_player] +
+          @purses[@current_player].to_s +
           ' Gold Coins.'
         
         winner = did_player_win
-        current_player += 1
+        @current_player += 1
         @current_player = 0 if @current_player == @players.length
         
         return winner
