@@ -34,7 +34,7 @@ class Game:
         self.in_penalty_box[self.how_many_players] = False
         
         print player_name + " was added"
-        print "They are player number #{len(self.players)}"
+        print "They are player number %s" % len(self.players)
         
         return True
     
@@ -43,14 +43,14 @@ class Game:
         return len(self.players)
     
     def roll(self, roll):
-        print "#{self.players[self.current_player]} is the current player"
-        print "They have rolled a #{roll}"
+        print "%s is the current player" % self.players[self.current_player]
+        print "They have rolled a %s" % roll
         
         if self.in_penalty_box[self.current_player]:
             if roll % 2 != 0:
                 is_getting_out_of_penalty_box = True
                 
-                print "#{self.players[self.current_player]} is getting out of the penalty box"
+                print "%s is getting out of the penalty box" % self.players[self.current_player]
                 self.places[self.current_player] = self.places[self.current_player] + roll
                 if self.places[self.current_player] > 11:
                     self.places[self.current_player] = self.places[self.current_player] - 12
@@ -58,7 +58,7 @@ class Game:
                 print self.players[self.current_player] + \
                             '\'s new location is' + \
                             str(self.places[self.current_player])
-                print "The category is #{_current_category}"
+                print "The category is %s" % self._current_category
                 self._ask_question()
             else:
                 print "%s is not getting out of the penalty box" % self.players[self.current_player]
@@ -71,7 +71,7 @@ class Game:
             print self.players[self.current_player] + \
                         '\'s new location is' + \
                         str(self.places[self.current_player])
-            print "The category is #{_current_category}"
+            print "The category is %s" % self._current_category
             self._ask_question()
     
     def _ask_question(self):
