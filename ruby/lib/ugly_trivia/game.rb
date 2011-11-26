@@ -36,7 +36,7 @@ module UglyTrivia
       @purses[how_many_players] = 0
       @in_penalty_box[how_many_players] = false
 
-      puts player_name + " was added"
+      puts "#{player_name} was added"
       puts "They are player number #{@players.length}"
 
       true
@@ -58,9 +58,7 @@ module UglyTrivia
           @places[@current_player] = @places[@current_player] + roll
           @places[@current_player] = @places[@current_player] - 12 if @places[@current_player] > 11
 
-          puts @players[@current_player] +
-                '\'s new location is' +
-                @places[@current_player].to_s
+          puts "#{@players[@current_player]}'s new location is #{@places[@current_player]}"
           puts "The category is #{current_category}"
           ask_question
         else
@@ -73,9 +71,7 @@ module UglyTrivia
         @places[@current_player] = @places[@current_player] + roll
         @places[@current_player] = @places[@current_player] - 12 if @places[@current_player] > 11
 
-        puts @players[@current_player] +
-              '\'s new location is' +
-              @places[@current_player].to_s
+        puts "#{@players[@current_player]}'s new location is #{@places[@current_player]}"
         puts "The category is #{current_category}"
         ask_question
       end
@@ -110,10 +106,7 @@ module UglyTrivia
         if @is_getting_out_of_penalty_box
           puts 'Answer was correct!!!!'
           @purses[@current_player] += 1
-          puts @players[@current_player] +
-            ' now has ' +
-            @purses[@current_player] +
-            ' Gold Coins.'
+          puts "#{@players[@current_player]} now has #{@purses[@current_player]} Gold Coins."
 
           winner = did_player_win()
           @current_player += 1
@@ -132,10 +125,7 @@ module UglyTrivia
 
         puts "Answer was corrent!!!!"
         @purses[@current_player] += 1
-        puts @players[@current_player] +
-          ' now has ' +
-          @purses[@current_player].to_s +
-          ' Gold Coins.'
+        puts "#{@players[@current_player]} now has #{@purses[@current_player]} Gold Coins."
 
         winner = did_player_win
         @current_player += 1
@@ -147,7 +137,7 @@ module UglyTrivia
 
     def wrong_answer
   		puts 'Question was incorrectly answered'
-  		puts @players[@current_player] + " was sent to the penalty box"
+  		puts "#{@players[@current_player]} was sent to the penalty box"
   		@in_penalty_box[@current_player] = true
 
       @current_player += 1
