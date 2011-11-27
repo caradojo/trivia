@@ -15,7 +15,7 @@ function Game() {
   game = this;
 
   var didPlayerWin = function(){
-    !(game.purses[game.currentPlayer] == 6)
+    return !(game.purses[game.currentPlayer] == 6)
   };
 
   var currentCategory = function(){
@@ -149,6 +149,7 @@ function Game() {
                   this.purses[this.currentPlayer]  + " Gold Coins.");
 
       var winner = didPlayerWin();
+
       this.currentPlayer += 1;
       if(this.currentPlayer == this.players.length)
         this.currentPlayer = 0;
@@ -187,4 +188,4 @@ do{
     notAWinner = game.wasCorrectlyAnswered();
   }
 
-}while(notAWinner == false || notAWinner == undefined);
+}while(notAWinner);
