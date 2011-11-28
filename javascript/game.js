@@ -50,7 +50,7 @@ function Game() {
   };
 
   this.isPlayable = function(howManyPlayers){
-    howManyPlayers >= 2;
+    return howManyPlayers >= 2;
   };
 
   this.add = function(playerName){
