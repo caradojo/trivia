@@ -35,13 +35,13 @@ function isPlayable {
 function add($playerName)
 {
 	$game.players += $playerName
-	$game.places[(howManyPlayers)] = 0;
-	$game.purses[(howManyPlayers)] = 0;
-	$game.inPenaltyBox[(howManyPlayers)] = $false;
+	$game.places[(howManyPlayers)] = 0
+	$game.purses[(howManyPlayers)] = 0
+	$game.inPenaltyBox[(howManyPlayers)] = $false
 
 	Write-Host $playerName "was added"
 	Write-Host "They are player number" $game.players.Count
-	$true;
+	$true
 }
 
 function howManyPlayers {
@@ -59,9 +59,9 @@ function roll($roll) {
 			$game.isGettingOutOfPenaltyBox = $true
 
 			Write-Host $game.players[$game.currentPlayer] is getting out of the penalty box
-			$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] + $roll;
+			$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] + $roll
 			if ($game.places[$game.currentPlayer] -gt 11)  {
-				$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] - 12;
+				$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] - 12
 			}
 
 			Write-host "$($game.players[$game.currentPlayer])'s" new location is $game.places[$game.currentPlayer]
@@ -71,13 +71,13 @@ function roll($roll) {
 		else
 		{
 			Write-Host $game.players[$game.currentPlayer] is not getting out of the penalty box
-			$game.isGettingOutOfPenaltyBox = $false;
+			$game.isGettingOutOfPenaltyBox = $false
 		}
 
 	}
 	else
 	{
-		$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] + $roll;
+		$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] + $roll
 		if ($game.places[$game.currentPlayer] -gt 11) {
 			$game.places[$game.currentPlayer] = $game.places[$game.currentPlayer] - 12
 		}
@@ -122,7 +122,7 @@ function currentCategory {
 	if ($game.places[$game.currentPlayer] -eq 2) { return "Sports" }
 	if ($game.places[$game.currentPlayer] -eq 6) { return "Sports" }
 	if ($game.places[$game.currentPlayer] -eq 10) { return "Sports" }
-	return "Rock";
+	return "Rock"
 }
 
 function wasCorrectlyAnswered
@@ -136,16 +136,16 @@ function wasCorrectlyAnswered
 			Write-Host $game.players[$game.currentPlayer] now has $game.purses[$game.currentPlayer] Gold Coins.
 
 			$winner = didPlayerWin
-			$game.currentPlayer++;
-			if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0; }
+			$game.currentPlayer++
+			if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0 }
 
-			return $winner;
+			return $winner
 		}
 		else
 		{
-			$game.currentPlayer++;
-			if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0; }
-			return $true;
+			$game.currentPlayer++
+			if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0 }
+			return $true
 		}
 
 
@@ -159,21 +159,21 @@ function wasCorrectlyAnswered
 		Write-Host $game.players[$game.currentPlayer] now has $game.purses[$game.currentPlayer] Gold Coins.
 
 		$winner = didPlayerWin
-		$game.currentPlayer++;
-		if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0; }
+		$game.currentPlayer++
+		if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0 }
 
-		return $winner;
+		return $winner
 	}
 }
 
 function wrongAnswer {
 	Write-Host Question was incorrectly answered
 	Write-Host $game.players[$game.currentPlayer] was sent to the penalty box
-	$game.inPenaltyBox[$game.currentPlayer] = $true;
+	$game.inPenaltyBox[$game.currentPlayer] = $true
 
-	$game.currentPlayer++;
-	if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0; }
-	$true;
+	$game.currentPlayer++
+	if ($game.currentPlayer -eq $game.players.Count) { $game.currentPlayer = 0 }
+	$true
 }
 
 
@@ -205,4 +205,4 @@ do {
 
 
 
-} while ($notAWinner);
+} while ($notAWinner)
