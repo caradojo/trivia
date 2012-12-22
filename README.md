@@ -1,14 +1,7 @@
-trivia
+Legacy Code Retreat code base
 ======
 
-<script type="text/javascript">
-/* <![CDATA[ */
-    (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-        t.parentNode.insertBefore(s, t);
-    })();
-/* ]]> */
-</script>
+Use this code base to run your own [Legacy Code Retreat](http://www.legacycoderetreat.org).
+
+Did your Legacy Code Retreat go well? You could thank me with a flattr: <a href="http://flattr.com/thing/1075656/" target="_blank">
+<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
