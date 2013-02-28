@@ -19,7 +19,7 @@ public class GameTest {
 
     private static final int NB_SMALL_GOLDEN_MASTER = 200;
 	private static final int NB_LONG_GOLDEN_MASTER = 2000;
-    private static final String REFERENCE_LOCATION = "src/test/resources/golden-master/Trivia_approved.";
+	private static final String REFERENCE_LOCATION = "src/test/resources/golden-master/Trivia_approved.";
 	private static final int FIXED_SEED = 287389;
 	
 	private Random randomizer = new Random(FIXED_SEED);
@@ -29,7 +29,8 @@ public class GameTest {
     @Test
 	public void small_golden_master() throws FileNotFoundException, IOException {
     	for (int i = 0; i < NB_SMALL_GOLDEN_MASTER; i++) {
-    		testFile(i);
+    		String expectedApprovalTriviaFilePath = REFERENCE_LOCATION + i;
+    		assertWithApprovalTriviaFile(expectedApprovalTriviaFilePath);
     	}
 	}
     
@@ -37,18 +38,20 @@ public class GameTest {
     @Ignore
     public void long_golden_master() throws FileNotFoundException, IOException {
     	for (int i = 0; i < NB_LONG_GOLDEN_MASTER; i++) {
-    		testFile(i);
+    		String expectedApprovalTriviaFilePath = REFERENCE_LOCATION + i;
+    		assertWithApprovalTriviaFile(expectedApprovalTriviaFilePath);
     	}
     }
     
     
-    protected void testFile(int i) throws IOException, FileNotFoundException {
+    protected void assertWithApprovalTriviaFile(String approvalTriviaFile) throws IOException, FileNotFoundException {
         File file = tmp.newFile();
         System.setOut(new PrintStream(file));
         GameRunner.playGame(randomizer);
-        assertThat(file).hasContentEqualTo(new File(REFERENCE_LOCATION + i));
+        assertThat(file).hasContentEqualTo(new File(approvalTriviaFile));
     }
-
+    
+ 
     public void createApprovalsTriviaFiles() throws FileNotFoundException
     {
        	for (int i = 0; i < NB_LONG_GOLDEN_MASTER; i++) {
@@ -56,6 +59,6 @@ public class GameTest {
        		System.setOut(new PrintStream(file));
        		GameRunner.playGame(randomizer);
     	}
-
     }
+
 }
