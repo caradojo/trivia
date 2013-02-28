@@ -17,6 +17,8 @@ import com.adaptionsoft.games.trivia.runner.GameRunner;
 
 public class GameTest {
 
+    private static final int NB_SMALL_GOLDEN_MASTER = 200;
+	private static final int NB_LONG_GOLDEN_MASTER = 2000;
     private static final String REFERENCE_LOCATION = "src/test/resources/golden-master/Trivia_approved.";
 	private static final int FIXED_SEED = 287389;
 	
@@ -26,7 +28,7 @@ public class GameTest {
     
     @Test
 	public void small_golden_master() throws FileNotFoundException, IOException {
-    	for (int i = 0; i < 200; i++) {
+    	for (int i = 0; i < NB_SMALL_GOLDEN_MASTER; i++) {
     		testFile(i);
     	}
 	}
@@ -34,7 +36,7 @@ public class GameTest {
     @Test
     @Ignore
     public void long_golden_master() throws FileNotFoundException, IOException {
-    	for (int i = 0; i < 2000; i++) {
+    	for (int i = 0; i < NB_LONG_GOLDEN_MASTER; i++) {
     		testFile(i);
     	}
     }
@@ -47,7 +49,13 @@ public class GameTest {
         assertThat(file).hasContentEqualTo(new File(REFERENCE_LOCATION + i));
     }
 
+    public void createApprovalsTriviaFiles() throws FileNotFoundException
+    {
+       	for (int i = 0; i < NB_LONG_GOLDEN_MASTER; i++) {
+       		File file = new File(REFERENCE_LOCATION + i);
+       		System.setOut(new PrintStream(file));
+       		GameRunner.playGame(randomizer);
+    	}
 
-
-
+    }
 }
