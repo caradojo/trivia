@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 #include "game.h"
 
 static bool not_a_winner;
@@ -6,16 +7,13 @@ static bool not_a_winner;
 int
 main ()
 {
-  int i;
   struct Game *a_game = game_new ();
 
   game_add (a_game, "Chet");
   game_add (a_game, "Pat");
   game_add (a_game, "Sue");
 
-  for (i = 100; i < 200; i++)
-    {
-      srand (i);
+	srand ((unsigned)time(0));
 
       do
 	{
@@ -31,5 +29,4 @@ main ()
 	    }
 	}
       while (not_a_winner);
-    }
-}
+  }
