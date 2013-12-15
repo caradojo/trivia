@@ -1,23 +1,15 @@
-//package com.adaptionsoft.games.uglytrivia;
 
 module game;
-// import java.util.ArrayList;
-// import java.util.LinkedList;
+
 import std.stdio;
 import std.conv;
 
 class Game {
-    //ArrayList players = new ArrayList();
 	string[] players;
-    int[6] places; //= new int[6];
-    int[6] purses; //= new int[6];
-    // boolean[] inPenaltyBox  = new boolean[6];
+    int[6] places;
+    int[6] purses;
 	bool[6] inPenaltyBox;
 
-    /*LinkedList popQuestions = new LinkedList();*/
-    /*LinkedList scienceQuestions = new LinkedList();*/
-    /*LinkedList sportsQuestions = new LinkedList();*/
-    /*LinkedList rockQuestions = new LinkedList();*/
     string[] popQuestions;
     string[] scienceQuestions;
 	string[] sportsQuestions;
