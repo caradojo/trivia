@@ -139,15 +139,15 @@ Private Function CurrentCategory()
         CurrentCategory = "Science"
         Exit Function
     End If
-    If iaPlaces(iCurrentPlayer) = 1 Then
+    If iaPlaces(iCurrentPlayer) = 2 Then
         CurrentCategory = "Sports"
         Exit Function
     End If
-    If iaPlaces(iCurrentPlayer) = 5 Then
+    If iaPlaces(iCurrentPlayer) = 6 Then
         CurrentCategory = "Sports"
         Exit Function
     End If
-    If iaPlaces(iCurrentPlayer) = 9 Then
+    If iaPlaces(iCurrentPlayer) = 10 Then
         CurrentCategory = "Sports"
         Exit Function
     End If
