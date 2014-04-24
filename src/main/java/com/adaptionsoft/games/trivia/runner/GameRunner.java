@@ -13,7 +13,7 @@ public class GameRunner {
 		playGame(rand);
 	}
 
-	public static void playGame(Random randomizer) {
+	public static Game playGame(Random randomizer) {
 		Game aGame = new Game();
 
 		aGame.add("Chet");
@@ -31,5 +31,7 @@ public class GameRunner {
 			}
 
 		} while (notAWinner);
+
+		return aGame;
 	}
 }
