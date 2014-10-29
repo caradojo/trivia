@@ -44,6 +44,7 @@ game_new ()
 
   game = malloc (sizeof (struct Game));
   game->player_num = 0;
+  game->current_player = 0;
 
   game->pop_question = pop_questions;
   game->science_question = science_questions;
