@@ -32,7 +32,8 @@
 			<groupId>com.github.approvals</groupId>
 			<artifactId>ApprovalTests</artifactId>
 			<version>0.13</version>
-			<scope>test</scope>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/lib/ApprovalTests/ApprovalTests.jar</systemPath>
 		</dependency>
 	</dependencies>
 
