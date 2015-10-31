@@ -1,7 +1,7 @@
 Legacy Code Retreat code base
 ======
 
-Use this code base to run your own [Legacy Code Retreat](http://legacycoderetreat.typepad.com).
+Use this code base to run your own [Legacy Code Retreat](http://legacycoderetreat.jbrains.ca).
 
-Did your Legacy Code Retreat go well? You could thank me with a flattr: <a href="http://flattr.com/thing/1075656/" target="_blank">
-<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+As of this writing, there isn't really a single place to get all the information you might want about Legacy Code Retreat. Search the web and ask your colleagues. Most importantly, don't panic! If you've been to Code Retreat even once, then you know most of what you need to run a Legacy Code Retreat. Give it a try!
+
