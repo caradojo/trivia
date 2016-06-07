@@ -13,7 +13,7 @@ The path of the courses was the following (7 sessions of 4h + 1 session for eval
   - Feature 1: allow to change the nb of purses to win the game: quite easy, but introduce TDD practice by themselves & start to understand concurrency problems & dependency inversion principle
   - Feature 2: allow to choose the questions' categories (impact on size of the board = 3 x nb categories): harder, need to do a little more of refactoring before starting (since currentCategory was still using hard coded categories), then need to find a way to test this feature (lots of Console.WriteLine...)
 - Continue Feature 2 implementation + retrieve questions from an external source (need abstraction, i.e Repository pattern + concrete implementation with a plain file for ex) + start removing Console.WriteLine dependency
-- Implement a Web API with Nancy: need to remove Console.WriteLine completely, introduce Events and EventPublisher (+ relation with Event Sourcing & CQRS). In the end, multiple games should be able to run in parallel.
+- (coming) Implement a Web API with Nancy/ASP.NET WebApi: need to remove Console.WriteLine completely, introduce Events and EventPublisher (+ relation with Event Sourcing & CQRS). In the end, multiple games should be able to run in parallel.
 
 F# refactoring focusing on baby steps to immutability
 ======
