@@ -8,10 +8,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.approvals</groupId>
+            <artifactId>ApprovalTests</artifactId>
+            <version>0.17</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/ApprovalTests.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
         </dependency>
+
+
+
     </dependencies>
 
     <build>
@@ -29,8 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
