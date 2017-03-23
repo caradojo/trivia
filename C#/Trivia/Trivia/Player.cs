@@ -2,7 +2,7 @@ using System;
 
 namespace Trivia
 {
-    internal class Player
+    public class Player
     {
         public string Name { get; }
 
