@@ -9,8 +9,7 @@ namespace Trivia
 
 
         List<Player> players = new List<Player>();
-
-        int[] places = new int[6];
+        
         int[] purses = new int[6];
 
         bool[] inPenaltyBox = new bool[6];
@@ -47,7 +46,6 @@ namespace Trivia
         public bool Add(string playerName)
         {
             players.Add(new Player(playerName));
-            places[HowManyPlayers()] = 0;
             purses[HowManyPlayers()] = 0;
             inPenaltyBox[HowManyPlayers()] = false;
 
@@ -73,12 +71,11 @@ namespace Trivia
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[currentPlayer].Name + " is getting out of the penalty box");
-                    places[currentPlayer] = places[currentPlayer] + roll;
-                    if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
+                    players[currentPlayer].Move(roll);
+                    
                     Console.WriteLine(players[currentPlayer].Name
                             + "'s new location is "
-                            + places[currentPlayer]);
+                            + players[currentPlayer].Place);
                     Console.WriteLine("The category is " + CurrentCategory());
                     AskQuestion();
                 }
@@ -91,13 +88,11 @@ namespace Trivia
             }
             else
             {
-
-                places[currentPlayer] = places[currentPlayer] + roll;
-                if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+                players[currentPlayer].Move(roll);
 
                 Console.WriteLine(players[currentPlayer].Name
                         + "'s new location is "
-                        + places[currentPlayer]);
+                        + players[currentPlayer].Place);
                 Console.WriteLine("The category is " + CurrentCategory());
                 AskQuestion();
             }
@@ -131,15 +126,15 @@ namespace Trivia
 
         private String CurrentCategory()
         {
-            if (places[currentPlayer] == 0) return "Pop";
-            if (places[currentPlayer] == 4) return "Pop";
-            if (places[currentPlayer] == 8) return "Pop";
-            if (places[currentPlayer] == 1) return "Science";
-            if (places[currentPlayer] == 5) return "Science";
-            if (places[currentPlayer] == 9) return "Science";
-            if (places[currentPlayer] == 2) return "Sports";
-            if (places[currentPlayer] == 6) return "Sports";
-            if (places[currentPlayer] == 10) return "Sports";
+            if (players[currentPlayer].Place == 0) return "Pop";
+            if (players[currentPlayer].Place == 4) return "Pop";
+            if (players[currentPlayer].Place == 8) return "Pop";
+            if (players[currentPlayer].Place == 1) return "Science";
+            if (players[currentPlayer].Place == 5) return "Science";
+            if (players[currentPlayer].Place == 9) return "Science";
+            if (players[currentPlayer].Place == 2) return "Sports";
+            if (players[currentPlayer].Place == 6) return "Sports";
+            if (players[currentPlayer].Place == 10) return "Sports";
             return "Rock";
         }
 
