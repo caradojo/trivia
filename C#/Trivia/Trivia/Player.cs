@@ -1,3 +1,5 @@
+using System;
+
 namespace Trivia
 {
     internal class Player
@@ -8,12 +10,16 @@ namespace Trivia
 
         public int GoldCoins { get; private set; }
 
+        public bool InPenaltyBox { get; set; }
+
         public Player(string name)
         {
             Name = name;
             Place = 0;
             GoldCoins = 0;
+            InPenaltyBox = false;
         }
+
 
         public void Move(int roll)
         {
@@ -24,6 +30,12 @@ namespace Trivia
         public void WinAGoldCoin()
         {
             GoldCoins++;
+            Console.WriteLine(Name + " now has " + GoldCoins + " Gold Coins.");
+        }
+
+        public void GoToPenaltyBox()
+        {
+            InPenaltyBox = true;
         }
     }
 }
