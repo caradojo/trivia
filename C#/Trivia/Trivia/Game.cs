@@ -10,8 +10,6 @@ namespace Trivia
 
         List<Player> players = new List<Player>();
         
-        int[] purses = new int[6];
-
         bool[] inPenaltyBox = new bool[6];
 
         LinkedList<string> popQuestions = new LinkedList<string>();
@@ -46,7 +44,6 @@ namespace Trivia
         public bool Add(string playerName)
         {
             players.Add(new Player(playerName));
-            purses[HowManyPlayers()] = 0;
             inPenaltyBox[HowManyPlayers()] = false;
 
             Console.WriteLine(playerName + " was added");
@@ -145,10 +142,10 @@ namespace Trivia
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    purses[currentPlayer]++;
+                    players[currentPlayer].WinAGoldCoin();
                     Console.WriteLine(players[currentPlayer].Name
                             + " now has "
-                            + purses[currentPlayer]
+                            + players[currentPlayer].GoldCoins
                             + " Gold Coins.");
 
                     bool winner = DidPlayerWin();
@@ -171,10 +168,10 @@ namespace Trivia
             {
 
                 Console.WriteLine("Answer was corrent!!!!");
-                purses[currentPlayer]++;
+                players[currentPlayer].WinAGoldCoin();
                 Console.WriteLine(players[currentPlayer].Name
                         + " now has "
-                        + purses[currentPlayer]
+                        + players[currentPlayer].GoldCoins
                         + " Gold Coins.");
 
                 bool winner = DidPlayerWin();
@@ -199,7 +196,7 @@ namespace Trivia
 
         private bool DidPlayerWin()
         {
-            return purses[currentPlayer] != 6;
+            return players[currentPlayer].GoldCoins != 6;
         }
     }
 }
