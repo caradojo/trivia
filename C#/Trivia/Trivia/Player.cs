@@ -40,7 +40,7 @@ namespace Trivia
 
         public bool IsWinner()
         {
-            return GoldCoins != 6;
+            return GoldCoins == 6;
         }
     }
 }

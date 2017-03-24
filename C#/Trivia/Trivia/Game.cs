@@ -122,7 +122,7 @@ namespace Trivia
                 }
 
                 _players.NextPlayer();
-                return true;
+                return false;
             }
 
             Console.WriteLine("Answer was corrent!!!!");
@@ -141,7 +141,7 @@ namespace Trivia
             _players.Current.GoToPenaltyBox();
 
             _players.NextPlayer();
-            return true;
+            return false;
         }
     }
 }
