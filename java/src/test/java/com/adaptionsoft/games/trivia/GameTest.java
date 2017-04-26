@@ -15,12 +15,13 @@ public class GameTest {
 	@Test
 	public void itsLockedDown() throws Exception {
 
-		Random rand = new Random(12344566);
-		ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(byteArrayStream));
-//		GameRunner.playGame(rand);
-		IntStream.range(1, 15).forEach(i -> GameRunner.playGame(rand));
-		Approvals.verify(byteArrayStream.toString());
+        Random randomizer = new Random(123455);
+        ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(resultStream));
+
+        IntStream.range(1,15).forEach(i -> GameRunner.playGame(randomizer));
+
+        Approvals.verify(resultStream.toString());
 
 	}
 }

@@ -29,7 +29,7 @@ public class Game {
 	public String createRockQuestion(int index){
 		return "Rock Question " + index;
 	}
-	
+
 	public boolean isPlayable() {
 		return (howManyPlayers() >= 2);
 	}
