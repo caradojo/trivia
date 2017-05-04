@@ -14,10 +14,10 @@ namespace Trivia
         bool isGettingOutOfPenaltyBox;
 
 
-        public Game(Players players)
+        public Game(Players players, Questions questions)
         {
             _players = players;
-            _questions = new Questions(new [] {"Pop", "Science", "Sports", "Rock" });
+            _questions = questions;
         }
 
         public void Roll(int roll)

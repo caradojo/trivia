@@ -15,7 +15,9 @@ namespace Trivia
                 players.Add("Pat");
                 players.Add("Sue");
 
-                var aGame = new Game(players);
+                var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"});
+
+                var aGame = new Game(players, questions);
 
                 Random rand = new Random(i);
 
