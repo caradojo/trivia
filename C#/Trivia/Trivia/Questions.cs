@@ -8,10 +8,10 @@ namespace Trivia
     {
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
 
-        private LinkedList<string> popQuestions = new LinkedList<string>();
-        private LinkedList<string> scienceQuestions = new LinkedList<string>();
-        private LinkedList<string> sportsQuestions = new LinkedList<string>();
-        private LinkedList<string> rockQuestions = new LinkedList<string>();
+        private QuestionsStack popQuestions = new QuestionsStack();
+        private QuestionsStack scienceQuestions = new QuestionsStack();
+        private QuestionsStack sportsQuestions = new QuestionsStack();
+        private QuestionsStack rockQuestions = new QuestionsStack();
 
         public Questions()
         {
@@ -34,23 +34,19 @@ namespace Trivia
             Console.WriteLine("The category is " + CurrentCategory(playerPlace));
             if (CurrentCategory(playerPlace) == "Pop")
             {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
+                popQuestions.AskQuestionAndDiscardIt();
             }
             if (CurrentCategory(playerPlace) == "Science")
             {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
+                scienceQuestions.AskQuestionAndDiscardIt();
             }
             if (CurrentCategory(playerPlace) == "Sports")
             {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
+                sportsQuestions.AskQuestionAndDiscardIt();
             }
             if (CurrentCategory(playerPlace) == "Rock")
             {
-                Console.WriteLine(rockQuestions.First());
-                rockQuestions.RemoveFirst();
+                rockQuestions.AskQuestionAndDiscardIt();
             }
         }
         private string CurrentCategory(int playerPlace)
