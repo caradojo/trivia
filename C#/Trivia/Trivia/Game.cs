@@ -17,7 +17,7 @@ namespace Trivia
         public Game(Players players)
         {
             _players = players;
-            _questions = new Questions();
+            _questions = new Questions(new [] {"Pop", "Science", "Sports", "Rock" });
         }
 
         public void Roll(int roll)

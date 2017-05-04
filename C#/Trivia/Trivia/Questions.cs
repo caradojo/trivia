@@ -6,27 +6,22 @@ namespace Trivia
 {
     public class Questions
     {
-        private readonly Dictionary<int, QuestionsStack> _categories =
-            new Dictionary<int, QuestionsStack>()
-            {
-                {0, new QuestionsStack("Pop")},
-                {1, new QuestionsStack("Science")},
-                {2, new QuestionsStack("Sports")},
-                {3, new QuestionsStack("Rock")}
-            };
-        
-        public Questions()
+        private readonly List<QuestionsStack> _categories = new List<QuestionsStack>();
+
+        public Questions(IEnumerable<string> categories)
         {
-            GenerateQuestions();
+            GenerateQuestions(categories);
         }
 
-        private void GenerateQuestions()
+        private void GenerateQuestions(IEnumerable<string> categories)
         {
-            for (var i = 0; i < 50; i++)
+            foreach (var category in categories)
             {
-                foreach (var questionsStack in _categories)
+                var questionsStack = new QuestionsStack(category);
+                _categories.Add(questionsStack);
+                for (var i = 0; i < 50; i++)
                 {
-                    questionsStack.Value.Generate(i);
+                    questionsStack.Generate(i);
                 }
             }
         }
@@ -37,7 +32,7 @@ namespace Trivia
         }
         private QuestionsStack CurrentCategory(int playerPlace)
         {
-            return _categories[playerPlace % 4];
+            return _categories[playerPlace % _categories.Count];
         }
     }
 }
