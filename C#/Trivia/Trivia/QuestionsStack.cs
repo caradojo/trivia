@@ -12,6 +12,10 @@ namespace Trivia
         public QuestionsStack(string category)
         {
             _category = category;
+            for (var i = 0; i < 50; i++)
+            {
+                Generate(i);
+            }
         }
 
         public void AskQuestionAndDiscardIt()

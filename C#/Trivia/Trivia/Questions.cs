@@ -19,10 +19,6 @@ namespace Trivia
             {
                 var questionsStack = new QuestionsStack(category);
                 _categories.Add(questionsStack);
-                for (var i = 0; i < 50; i++)
-                {
-                    questionsStack.Generate(i);
-                }
             }
         }
 
