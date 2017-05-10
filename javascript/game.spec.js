@@ -1,6 +1,8 @@
 var Game = require('./game.js');
-var expect = require('chai').expect;
+let gameRunner = require('game-runner')
 
+var expect = require('chai').expect;
+let approvals = require('approvals')
 
 describe("The test environment", function () {
     it("should pass", function () {

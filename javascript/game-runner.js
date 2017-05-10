@@ -1,7 +1,7 @@
 
 var Game = require('./game');
 
-function run() {
+module.exports = function gameRunner() {
 
     var notAWinner = false;
 
@@ -23,4 +23,4 @@ function run() {
 
     } while (notAWinner);
 }
-run();
+
