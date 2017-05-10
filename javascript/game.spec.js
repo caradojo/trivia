@@ -1,15 +1,18 @@
-require('./game.js');
+var Game = require('./game.js');
+var expect = require('chai').expect;
 
-describe("The test environment", function() {
-  it("should pass", function() {
-    expect(true).toBe(true);
-  });
 
-  it("should access game", function() {
-    expect(Game).toBeDefined();
-  });
-});
+describe("The test environment", function () {
+    it("should pass", function () {
 
-describe("Your specs...", function() {
-  // it ...
+        var logged = ""
+        var oldLog = console.log
+        console.log = function (arg) {
+            logged = arg;
+        }
+        console.log("slkjfsljfd")
+        console.log = oldLog
+        expect(logged).to.equal("slkjfsljd")
+    });
+
 });
