@@ -1,7 +1,7 @@
 
 var Game = require('./game');
 
-module.exports = function gameRunner() {
+module.exports = function gameRunner(randomInt) {
 
     var notAWinner = false;
 
@@ -13,9 +13,9 @@ module.exports = function gameRunner() {
 
     do {
 
-        game.roll(Math.floor(Math.random() * 6) + 1);
+        game.roll(randomInt(6));
 
-        if (Math.floor(Math.random() * 10) == 7) {
+        if (randomInt(10)  == 7) {
             notAWinner = game.wrongAnswer();
         } else {
             notAWinner = game.wasCorrectlyAnswered();
