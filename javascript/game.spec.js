@@ -1,20 +1,23 @@
 var Game = require('./game.js');
-let gameRunner = require('game-runner')
+var gameRunner = require('./game-runner')
 
 var expect = require('chai').expect;
-let approvals = require('approvals')
+var approvals = require('approvals')
+approvals.mocha()
 
 describe("The test environment", function () {
     it("should pass", function () {
 
-        var logged = ""
+        var loggedLines = []
         var oldLog = console.log
         console.log = function (arg) {
-            logged = arg;
+            loggedLines.push(arg);
         }
         console.log("slkjfsljfd")
+        console.log("aaaaaaaslkjfsljfd")
         console.log = oldLog
-        expect(logged).to.equal("slkjfsljd")
+        this.verifyAsJSON(loggedLines)
+        // expect(loggedLines).to.equal("slkjfsljd")
     });
 
 });
