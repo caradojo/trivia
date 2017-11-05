@@ -1,30 +1,26 @@
-"use strict"
+const Game = require('./game.js');
+const gameRunner = require('./game-runner');
 
-var Game = require('./game.js');
-var gameRunner = require('./game-runner')
+const expect = require('chai').expect;
+const approvals = require('approvals');
+approvals.mocha();
+const _ = require('lodash');
+const { getRandom } = require('./rands');
 
-var expect = require('chai').expect;
-var approvals = require('approvals')
-approvals.mocha()
-let _ = require('lodash')
 describe("The test environment", function () {
     it("should pass", function () {
 
-        var loggedLines = []
-        var oldLog = console.log
+        const loggedLines = [];
+        const oldLog = console.log;
         console.log = function (arg) {
             loggedLines.push(arg);
         }
-        let randomInt = function (maxInt) {
-            return maxInt;
-        }
 
-        _.range(10).forEach((runIndex) => {
-            gameRunner(randomInt)
+        _.range(15).forEach(() => {
+            gameRunner(getRandom)
+        });
 
-        })
-
-        console.log = oldLog
+        console.log = oldLog;
 
         this.verifyAsJSON(loggedLines)
 
