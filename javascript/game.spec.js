@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 const approvals = require('approvals');
 approvals.mocha();
 const _ = require('lodash');
-const { getRandom } = require('./rands');
+const {getRandom} = require('./rands');
 
 describe("The test environment", function () {
     it("should pass", function () {
