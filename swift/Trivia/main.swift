@@ -12,13 +12,13 @@ var notAWinner: Bool
 
 let aGame = Game()
 
-aGame.add("Chet")
-aGame.add("Pat")
-aGame.add("Sue")
+_ = aGame.add(playerName: "Chet")
+_ = aGame.add(playerName: "Pat")
+_ = aGame.add(playerName: "Sue")
 
 repeat {
     
-    aGame.roll(Int(arc4random_uniform(5)) + 1)
+    aGame.roll(roll: Int(arc4random_uniform(5)) + 1)
     
     if (Int(arc4random_uniform(9)) == 7) {
         notAWinner = aGame.wrongAnswer()
