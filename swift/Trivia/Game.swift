@@ -10,9 +10,9 @@ import Foundation
 
 public class Game {
     var players = [String]()
-    var places = [Int](count: 6, repeatedValue: 0)
-    var purses  = [Int](count: 6, repeatedValue: 0)
-    var inPenaltyBox  = [Bool](count: 6, repeatedValue: false)
+    var places = [Int](repeating: 0, count: 6)
+    var purses  = [Int](repeating: 0, count: 6)
+    var inPenaltyBox  = [Bool](repeating: false, count: 6)
     
     var popQuestions = [String]()
     var scienceQuestions = [String]()
@@ -27,7 +27,7 @@ public class Game {
 			popQuestions.append("Pop Question \(i)")
 			scienceQuestions.append(("Science Question \(i)"))
 			sportsQuestions.append(("Sports Question \(i)"))
-			rockQuestions.append(createRockQuestion(i))
+            rockQuestions.append(createRockQuestion(index: i))
     	}
     }
 
@@ -121,19 +121,19 @@ public class Game {
 		if inPenaltyBox[currentPlayer]{
 			if isGettingOutOfPenaltyBox {
 				print("Answer was correct!!!!")
-				purses[currentPlayer]++
+				purses[currentPlayer] += 1
 				print(players[currentPlayer],
 						"now has",
 						purses[currentPlayer],
 						"Gold Coins.")
 				
 				let winner = didPlayerWin
-				currentPlayer++
+				currentPlayer += 1
                 if currentPlayer == players.count {currentPlayer = 0}
 				
 				return winner
 			} else {
-				currentPlayer++
+				currentPlayer += 1
                 if currentPlayer == players.count {currentPlayer = 0}
 				return true
 			}
@@ -143,14 +143,14 @@ public class Game {
 		} else {
 		
 			print("Answer was corrent!!!!")
-			purses[currentPlayer]++
+			purses[currentPlayer] += 1
 			print(players[currentPlayer],
 					"now has",
 					purses[currentPlayer],
 					"Gold Coins.")
 			
 			let winner = didPlayerWin
-			currentPlayer++
+			currentPlayer += 1
             if currentPlayer == players.count {currentPlayer = 0}
 			
 			return winner
@@ -162,7 +162,7 @@ public class Game {
 		print(players[currentPlayer], "was sent to the penalty box")
 		inPenaltyBox[currentPlayer] = true
 		
-		currentPlayer++
+		currentPlayer += 1
         if currentPlayer == players.count {currentPlayer = 0}
 		return true
 	}
