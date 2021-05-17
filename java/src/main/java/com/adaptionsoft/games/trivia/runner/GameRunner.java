@@ -1,36 +1,24 @@
 
 package com.adaptionsoft.games.trivia.runner;
+
 import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 
-
 public class GameRunner {
 
-	private static boolean notAWinner;
+    public static void main(String[] args) {
+        Game game = new Game();
 
-	public static void main(String[] args) {
-		Game aGame = new Game();
-		
-		aGame.add("Chet");
-		aGame.add("Pat");
-		aGame.add("Sue");
-		
-		Random rand = new Random();
-	
-		do {
-			
-			aGame.roll(rand.nextInt(5) + 1);
-			
-			if (rand.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
-			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
-			}
-			
-			
-			
-		} while (notAWinner);
-		
-	}
+        game.add("Chet");
+        game.add("Pat");
+        game.add("Sue");
+
+        Random rand = new Random();
+        boolean winner;
+        do {
+            winner = game.turn(() -> rand.nextInt(5) + 1,
+                    () -> rand.nextInt(9));
+        } while (!winner);
+    }
 }
