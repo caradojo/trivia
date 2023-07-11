@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Game::Game() : currentPlayer(0), places({}), purses({}){
+Game::Game() : places{}, purses{}, currentPlayer(0) {
 	for (int i = 0; i < 50; i++)
 	{
 
@@ -148,14 +148,14 @@ bool Game::wasCorrectlyAnswered()
 
 			bool winner = didPlayerWin();
 			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+			if (currentPlayer == (int)players.size()) currentPlayer = 0;
 
 			return winner;
 		}
 		else
 		{
 			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+			if (currentPlayer == (int)players.size()) currentPlayer = 0;
 			return true;
 		}
 
@@ -174,7 +174,7 @@ bool Game::wasCorrectlyAnswered()
 
 		bool winner = didPlayerWin();
 		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+		if (currentPlayer == (int)players.size()) currentPlayer = 0;
 
 		return winner;
 	}
@@ -187,7 +187,7 @@ bool Game::wrongAnswer()
 	inPenaltyBox[currentPlayer] = true;
 
 	currentPlayer++;
-	if (currentPlayer == players.size()) currentPlayer = 0;
+	if (currentPlayer == (int)players.size()) currentPlayer = 0;
 	return true;
 }
 
