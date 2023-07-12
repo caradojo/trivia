@@ -1,5 +1,7 @@
 #include "game.h"
 
+#define _CRT_NONSTDC_NO_DEPRECATE // allow strdup() to be used on Windows
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
