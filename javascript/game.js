@@ -51,10 +51,12 @@ exports.Game = function() {
     rockQuestions.push(this.createRockQuestion(i));
   };
 
-  this.isPlayable = function(howManyPlayers){
-    return howManyPlayers >= 2;
+  this.isPlayable = function(){
+    return players.length >= 2;
   };
 
+  // TODO why is this not void?
+  // if it is supposed to return boolean, what does it signify?
   this.add = function(playerName){
     players.push(playerName);
     places[this.howManyPlayers() - 1] = 0;
@@ -65,6 +67,10 @@ exports.Game = function() {
     console.log("They are player number " + players.length);
 
     return true;
+  };
+
+  this.getCurrentPlayer = function() {
+    return players[currentPlayer];
   };
 
   this.howManyPlayers = function(){
@@ -84,14 +90,30 @@ exports.Game = function() {
   };
 
   this.roll = function(roll){
-    console.log(players[currentPlayer] + " is the current player");
-    console.log("They have rolled a " + roll);
 
-    if(inPenaltyBox[currentPlayer]){
-      if(roll % 2 != 0){
-        isGettingOutOfPenaltyBox = true;
+    if (this.isPlayable()) {
+      console.log(players[currentPlayer] + " is the current player");
+      console.log("They have rolled a " + roll);
 
-        console.log(players[currentPlayer] + " is getting out of the penalty box");
+      if(inPenaltyBox[currentPlayer]){
+        if(roll % 2 != 0){
+          isGettingOutOfPenaltyBox = true;
+
+          console.log(players[currentPlayer] + " is getting out of the penalty box");
+          places[currentPlayer] = places[currentPlayer] + roll;
+          if(places[currentPlayer] > 11){
+            places[currentPlayer] = places[currentPlayer] - 12;
+          }
+
+          console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
+          console.log("The category is " + currentCategory());
+          askQuestion();
+        }else{
+          console.log(players[currentPlayer] + " is not getting out of the penalty box");
+          isGettingOutOfPenaltyBox = false;
+        }
+      }else{
+
         places[currentPlayer] = places[currentPlayer] + roll;
         if(places[currentPlayer] > 11){
           places[currentPlayer] = places[currentPlayer] - 12;
@@ -100,21 +122,12 @@ exports.Game = function() {
         console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
         console.log("The category is " + currentCategory());
         askQuestion();
-      }else{
-        console.log(players[currentPlayer] + " is not getting out of the penalty box");
-        isGettingOutOfPenaltyBox = false;
       }
-    }else{
-
-      places[currentPlayer] = places[currentPlayer] + roll;
-      if(places[currentPlayer] > 11){
-        places[currentPlayer] = places[currentPlayer] - 12;
-      }
-
-      console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
-      console.log("The category is " + currentCategory());
-      askQuestion();
+      return true;
+    } else {
+      return false;
     }
+
   };
 
   this.wasCorrectlyAnswered = function(){
@@ -169,8 +182,7 @@ exports.Game = function() {
 		return true;
   };
 };
-
-var notAWinner = false;
+/*var notAWinner = false;
 
 var game = new Game();
 
@@ -188,4 +200,4 @@ do{
     notAWinner = game.wasCorrectlyAnswered();
   }
 
-}while(notAWinner);
+}while(notAWinner);*/
