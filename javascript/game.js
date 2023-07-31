@@ -55,18 +55,23 @@ exports.Game = function() {
     return players.length >= 2;
   };
 
-  // TODO why is this not void?
-  // if it is supposed to return boolean, what does it signify?
   this.add = function(playerName){
-    players.push(playerName);
-    places[this.howManyPlayers() - 1] = 0;
-    purses[this.howManyPlayers() - 1] = 0;
-    inPenaltyBox[this.howManyPlayers() - 1] = false;
+      console.log(`Adding ${playerName} current number of players is ${this.howManyPlayers()}`)
+      if (this.canAddNewPlayer()) {
+          players.push(playerName);
+          places[this.howManyPlayers() - 1] = 0;
+          purses[this.howManyPlayers() - 1] = 0;
+          inPenaltyBox[this.howManyPlayers() - 1] = false;
 
-    console.log(playerName + " was added");
-    console.log("They are player number " + players.length);
+          console.log(playerName + " was added");
+          console.log("They're player number " + players.length);
 
-    return true;
+          return true;
+      } else {
+          console.log(`There are ${players.length} in this game, the max is 6`)
+          console.log(`Couldn't add ${playerName}, There are too many players in this game!`);
+          return false
+      }
   };
 
   this.getCurrentPlayer = function() {
@@ -77,6 +82,9 @@ exports.Game = function() {
     return players.length;
   };
 
+  this.canAddNewPlayer = function () {
+      return this.howManyPlayers() <= 6;
+  }
 
   var askQuestion = function(){
     if(currentCategory() == 'Pop')

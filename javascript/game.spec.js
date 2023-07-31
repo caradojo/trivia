@@ -1,7 +1,7 @@
 require('./game.js');
 
-describe("The test environment", function() {
-  it("should pass", function() {
+describe('The test environment', function() {
+  it('should pass', function() {
     expect(true).toBe(true);
   });
 
@@ -10,7 +10,7 @@ describe("The test environment", function() {
   });
 });
 
-describe("our refactoring tests", function() {
+describe("our player number tests", function() {
   it('should not be playable when initialised', function () {
     const game = new Game;
     expect(game.isPlayable()).toBe(false);
@@ -58,5 +58,20 @@ describe("our refactoring tests", function() {
     expect(didRollHappen).toBe(true)
 
   });
+
+  it("game should have a maximum of 6 players", function () {
+
+    const game = new Game;
+
+    for (let i = 1; i < 7; i++) {
+      expect(game.add(`${i}`)).toBe(true);
+    }
+
+    expect(game.add("7")).toBe(false);
+    expect(game.add("8")).toBe(false);
+
+  });
+
+
 
 });
