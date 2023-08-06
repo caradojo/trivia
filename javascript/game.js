@@ -57,7 +57,7 @@ exports.Game = function() {
 
   this.add = function(playerName){
       console.log(`Adding ${playerName} current number of players is ${this.howManyPlayers()}`)
-      if (this.canAddNewPlayer()) {
+      if (this.canAddNewPlayer(this.howManyPlayers())) {
           players.push(playerName);
           places[this.howManyPlayers() - 1] = 0;
           purses[this.howManyPlayers() - 1] = 0;
@@ -82,8 +82,8 @@ exports.Game = function() {
     return players.length;
   };
 
-  this.canAddNewPlayer = function () {
-      return this.howManyPlayers() <= 6;
+  this.canAddNewPlayer = function (currentCount) {
+      return currentCount < 6;
   }
 
   var askQuestion = function(){
