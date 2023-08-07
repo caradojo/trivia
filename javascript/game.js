@@ -1,10 +1,13 @@
 exports = typeof window !== "undefined" && window !== null ? window : global;
 
 exports.Game = function() {
+
+  const maxNumberOfPlayers = 6;
+
   var players          = new Array();
-  var places           = new Array(6);
-  var purses           = new Array(6);
-  var inPenaltyBox     = new Array(6);
+  var places           = new Array(maxNumberOfPlayers);
+  var purses           = new Array(maxNumberOfPlayers);
+  var inPenaltyBox     = new Array(maxNumberOfPlayers);
 
   var popQuestions     = new Array();
   var scienceQuestions = new Array();
@@ -15,7 +18,7 @@ exports.Game = function() {
   var isGettingOutOfPenaltyBox = false;
 
   var didPlayerWin = function(){
-    return !(purses[currentPlayer] == 6)
+    return !(purses[currentPlayer] == maxNumberOfPlayers)
   };
 
   var currentCategory = function(){
@@ -83,7 +86,7 @@ exports.Game = function() {
   };
 
   this.canAddNewPlayer = function (currentCount) {
-      return currentCount < 6;
+      return currentCount < maxNumberOfPlayers;
   }
 
   var askQuestion = function(){
@@ -96,6 +99,18 @@ exports.Game = function() {
     if(currentCategory() == 'Rock')
       console.log(rockQuestions.shift());
   };
+
+  /*
+  * playRound()
+  * responsible for:
+  * - rolling dice for current player
+  * - asking the question
+  * - accepting the answer
+  * - determining if there is a winner \ has the game ended?
+  * -- no? setting the next player
+  * -- yes? end the game
+  *
+  * */
 
   this.roll = function(roll){
 
@@ -200,6 +215,8 @@ game.add('Sue');
 
 do{
 
+  game.playRound();
+
   game.roll(Math.floor(Math.random()*6) + 1);
 
   if(Math.floor(Math.random()*10) == 7){
@@ -208,4 +225,4 @@ do{
     notAWinner = game.wasCorrectlyAnswered();
   }
 
-}while(notAWinner);*/
+}while(!game.isThereAWinner());*/
