@@ -75,3 +75,20 @@ describe("our player number tests", function() {
 
 
 });
+
+describe("Penalty box tests", function() {
+
+  it("Player that is currently in box, answers correctly, is release", function(){
+
+    const game = new Game;
+
+    game.add('Jeff');
+    game.add('steve');
+    game.getInPenaltyBox()[0] = true;
+
+    game.roll(1);
+
+    game.wasCorrectlyAnswered();
+    expect(game.getInPenaltyBox()[0]).toBe(false);
+  });
+});
