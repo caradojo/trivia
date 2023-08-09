@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "jest": "^29.6.2",
     "save-dev": "^0.0.1-security",
     "yarn": "^1.22.19"
   },
   "scripts": {
     "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2"
   }
 }
