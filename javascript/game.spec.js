@@ -115,6 +115,33 @@ describe("Coin and purse tests", function() {
     game.roll(3);
     game.wasCorrectlyAnswered();
     expect(game.getPlayerPurse()[0]).toBe(1)
+  });
+
+  it("Player currently in pen box, being released, answers correctly, gains one coin", function() {
+    const game = new Game;
+
+    game.add('Jeff');
+    game.add('steve');
+    game.getInPenaltyBox()[0] = true;
+
+    game.roll(1);
+
+    game.wasCorrectlyAnswered();
+    expect(game.getPlayerPurse()[0]).toBe(1);
+
+  });
+
+  it("Player currently in pen box, NOT being release, answers correctly, does NOT gain one coin", function() {
+
+    const game = new Game;
+
+    game.add("Jedd");
+    game.add("Bill");
+    game.getInPenaltyBox()[0] = true;
+
+    game.roll(2);
+    game.wasCorrectlyAnswered();
+    expect(game.getPlayerPurse()[0]).toBe(0);
   })
 });
 
