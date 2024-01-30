@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from trivia import main
 
 # Make sure all runs use the same random sequence
