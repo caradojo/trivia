@@ -11,4 +11,7 @@ interpreter:python3
 # Settings for the C++ version
 #executable:${TEXTTEST_HOME}/C++/build/Trivia
 
+# Settings for the C version
+#executable:${TEXTTEST_HOME}/C/build/trivia
+
 filename_convention_scheme:standard
