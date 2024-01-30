@@ -1,4 +1,5 @@
 ﻿#include <stdlib.h>
+#include <time.h>
 #include "Game.h"
 
 static bool notAWinner;
@@ -6,7 +7,8 @@ static bool notAWinner;
 int main()
 {
 	Game aGame;
-	srand(0);
+        srand ((unsigned)time(0));
+	// srand(0);
 	aGame.add("Chet");
 	aGame.add("Pat");
 	aGame.add("Sue");

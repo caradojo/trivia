@@ -8,8 +8,8 @@ int
 main ()
 {
   struct Game *a_game = game_new ();
-  srand(1); // make RNG repeatable
-  // srand ((unsigned)time(0));
+  //srand(1); // make RNG repeatable
+  srand ((unsigned)time(0));
 
   game_add (a_game, "Chet");
   game_add (a_game, "Pat");
