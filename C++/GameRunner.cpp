@@ -6,7 +6,7 @@ static bool notAWinner;
 int main()
 {
 	Game aGame;
-
+	srand(0);
 	aGame.add("Chet");
 	aGame.add("Pat");
 	aGame.add("Sue");
